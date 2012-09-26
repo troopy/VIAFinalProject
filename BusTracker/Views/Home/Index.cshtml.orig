@@ -176,9 +176,11 @@
         <input id="address" type="text" value="Sydney, NSW">
         <input id="geoBtn" type="button" value="Geocode">
     </div>
-    <p></p>
-<p></p>
-
+<<<<<<< HEAD
+   
+=======
+   <p></p>
+>>>>>>> 37d5ef1f71a873cb3e1143403d2cc62d6f100806
 
 </body>
 </html>
