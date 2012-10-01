@@ -6,140 +6,31 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>No title</title>
-
+    
     <script src="Scripts/jquery-1.7.1.js"></script>
     <link href="Style/MapStyle.css" rel="stylesheet" />
     <script type="text/javascript"
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBaD9y122lONvSWmdvIcOJIolJWpEQFxZY&sensor=false">
     </script>
+    <script src="Scripts/map.js"></script>
     <script type="text/javascript">
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-
-                function (position) {
-                    var LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    var infoWindow = new google.maps.InfoWindow();
-
-                    mapThisGoogle(LatLng);
-                    addMarker(LatLng);
-                    
-                    Geocodee(LatLng, infoWindow);
-                    google.maps.event.addListener(marker, "dragend", function () {
-
-                        Geocodee(marker.getPosition(), infoWindow);
-                    });
-
-                    //    var addresses = geocoder.location(position.coords.latitude, position.coords.longitude, 1);
-
-
-                });
-            function Geocodee(LatLng, infowindow) {
-
-                geocoder = new google.maps.Geocoder();
-                geocoder.geocode({ 'latLng': LatLng }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        map.setCenter(results[0].geometry.location);
-                        infowindow.setContent(results[0].formatted_address);
-                        infowindow.open(map, marker);
-                    } else {
-                        alert("Geocode was not successful for the following reason: " + status);
-                    }
-                });
-            }
-            function addMarker(LatLng) {
-                marker = new google.maps.Marker({
-                    position: LatLng,
-                    map: map,
-                    draggable: true,
-                    animation: google.maps.Animation.DROP
-                });
-
-
-
-            }
-            function mapThisGoogle(LatLng) {
-
-
-                var mapOptions = {
-                    center: LatLng,
-                    zoom: 15,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-                map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-            }
-            function codeAddress(marker) {
-                var address = document.getElementById('address').value;
-                geocoder.geocode({ 'address': address }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        map.setCenter(results[0].geometry.location);
-                        marker.setPosition(results[0].geometry.location);
-                        Geocodee(results[0].geometry.location, infoWindow);
-                        //new google.maps.Marker({
-                        //map: map,
-                        //position: results[0].geometry.location
-                        //  });
-                    } else {
-                        alert('Geocode was not successful for the following reason: ' + status);
-                    }
-                });
-            }
-
-            //function codeLatLng() {
-            //    var input = document.getElementById('latlng').value;
-            //    var latlngStr = input.split(',', 2);
-            //    var lat = parseFloat(latlngStr[0]);
-            //    var lng = parseFloat(latlngStr[1]);
-            //    var latlng = new google.maps.LatLng(lat, lng);
-            //    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-            //        if (status == google.maps.GeocoderStatus.OK) {
-            //            if (results[1]) {
-            //                map.setZoom(11);
-            //                marker = new google.maps.Marker({
-            //                    position: latlng,
-            //                    map: map
-            //                });
-            //                infowindow.setContent(results[1].formatted_address);
-            //                infowindow.open(map, marker);
-            //            } else {
-            //                alert('No results found');
-            //            }
-            //        } else {
-            //            alert('Geocoder failed due to: ' + status);
-            //        }
-            //    });
-            //}
+  
+        $(document).ready(function () {
+            initialize();
+           
+           
             // not functioning correctly
-            $(document).ready(function () {
                 $("#geoBtn").click(
                    function () {
-                       
                        codeAddress(marker)
                    }
                 );
-            });
             // not implemented yet
             $(document).ready(function ()
             {
                 $("#homeBtn").click(function () {  });
             });
-        }
-
-        // geo coder button
-     
-
-      
-
-    </script>
-
-
-
-
-
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            //setInterval();
+              
             $.fx.off = false;
             $("#frame").animate({ rotate: '+=45deg' }, 1000);
             $(".text").hide();
@@ -148,16 +39,13 @@
              function () {
                  $(".text").fadeOut(500);
              });
+
+            //$(".button").click(
+            //    function () {
+            //    $("#map_canvas").slideDown(500);
+            //});
         });
-
-
-    </script>
-    <script>
-
-
-        $(".button").click(function () {
-            $("#map_canvas").slideDown(500);
-        });
+       
     </script>
 </head>
 <body>
@@ -186,8 +74,7 @@
         <p></p>
         <input id="btnHome" type="button" value="My Location" />
     </div>
-   <p></p>
-
+  
 
 </body>
 </html>
