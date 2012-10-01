@@ -6,13 +6,15 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>No title</title>
-
+    
     <script src="Scripts/jquery-1.7.1.js"></script>
     <link href="Style/MapStyle.css" rel="stylesheet" />
     <script type="text/javascript"
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBaD9y122lONvSWmdvIcOJIolJWpEQFxZY&sensor=false">
     </script>
+    <script src="Scripts/map.js"></script>
     <script type="text/javascript">
+<<<<<<< HEAD
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -109,37 +111,25 @@
             //        }
             //    });
             //}
+=======
+  
+        $(document).ready(function () {
+            initialize();
+           
+           
+>>>>>>> 9e4575e5a6d0379ec13c70dfc1e84ee3af7b39a6
             // not functioning correctly
-            $(document).ready(function () {
                 $("#geoBtn").click(
                    function () {
-                       
                        codeAddress(marker)
                    }
                 );
-            });
             // not implemented yet
             $(document).ready(function ()
             {
                 $("#homeBtn").click(function () {  });
             });
-        }
-
-        // geo coder button
-     
-
-      
-
-    </script>
-
-
-
-
-
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            //setInterval();
+              
             $.fx.off = false;
             $("#frame").animate({ rotate: '+=45deg' }, 1000);
             $(".text").hide();
@@ -148,16 +138,13 @@
              function () {
                  $(".text").fadeOut(500);
              });
+
+            //$(".button").click(
+            //    function () {
+            //    $("#map_canvas").slideDown(500);
+            //});
         });
-
-
-    </script>
-    <script>
-
-
-        $(".button").click(function () {
-            $("#map_canvas").slideDown(500);
-        });
+       
     </script>
 </head>
 <body>
@@ -186,8 +173,7 @@
         <p></p>
         <input id="btnHome" type="button" value="My Location" />
     </div>
-   <p></p>
-
+  
 
 </body>
 </html>
