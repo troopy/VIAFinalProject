@@ -107,6 +107,7 @@
             //        }
             //    });
             //}
+            // not functioning correctly
             $(document).ready(function () {
                 $("#geoBtn").click(
                    function () {
@@ -114,6 +115,11 @@
                        codeAddress(marker)
                    }
                 );
+            });
+            // not implemented yet
+            $(document).ready(function ()
+            {
+                $("#homeBtn").click(function () {  });
             });
         }
 
@@ -173,12 +179,13 @@
     </div>
 
     <div>
-        <input id="address" type="text" value="Sydney, NSW">
+        <input id="address" type="text" value="Horsens, Denmark">
         <input id="geoBtn" type="button" value="Geocode">
+        <p></p>
+        <input id="btnHome" type="button" value="My Location" />
     </div>
    <p></p>
 
-    <p>nbm</p>
 
 </body>
 </html>
