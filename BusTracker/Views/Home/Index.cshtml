@@ -19,13 +19,15 @@
 
                 function (position) {
                     var LatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    var infoWindow = new google.maps.InfoWindow();
+
                     mapThisGoogle(LatLng);
                     addMarker(LatLng);
-                    var infowindow = new google.maps.InfoWindow();
-                    Geocodee(LatLng, infowindow);
+                    
+                    Geocodee(LatLng, infoWindow);
                     google.maps.event.addListener(marker, "dragend", function () {
 
-                        Geocodee(marker.getPosition(), infowindow);
+                        Geocodee(marker.getPosition(), infoWindow);
                     });
 
                     //    var addresses = geocoder.location(position.coords.latitude, position.coords.longitude, 1);
@@ -72,7 +74,7 @@
                     if (status == google.maps.GeocoderStatus.OK) {
                         map.setCenter(results[0].geometry.location);
                         marker.setPosition(results[0].geometry.location);
-                        Geocodee(results[0].geometry.location, infowindow);
+                        Geocodee(results[0].geometry.location, infoWindow);
                         //new google.maps.Marker({
                         //map: map,
                         //position: results[0].geometry.location
