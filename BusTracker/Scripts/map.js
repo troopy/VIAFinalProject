@@ -75,7 +75,7 @@ function codeAddress(marker) {
             if (status == google.maps.GeocoderStatus.OK) {
                 map.setCenter(results[0].geometry.location);
                 marker.setPosition(results[0].geometry.location);
-                Geocodee(results[0].geometry.location, infowindow);
+                codeLatLng(results[0].geometry.location, infowindow);
                 //new google.maps.Marker({
                 //map: map,
                 //position: results[0].geometry.location
