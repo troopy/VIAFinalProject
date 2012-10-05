@@ -8,6 +8,7 @@ var browserSupportFlag = new Boolean();
 var geocoder;
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
+var path = [], poly;
 
 function initialize()
 {
@@ -56,7 +57,43 @@ function initialize()
         }
         map.setCenter(initialLocation);
     }
+
+    /*
+    google.maps.event.addListener(map, "click", function (evt)
+    {
+        
+        
+        if (path.length == 0)
+        {
+            //path.push(evt.latLng);
+            path.push(new google.maps.LatLng(55.862363, 9.856836));
+            poly = new google.maps.Polyline({ map: map });
+            poly.setPath(path);
+            
+        } else
+        {
+            directionsService.route({
+                origin: path[path.length - 1],
+                destination: new google.maps.LatLng(55.862991, 9.863353),
+                travelMode: google.maps.DirectionsTravelMode.DRIVING
+            }, function (result, status)
+            {
+                if (status == google.maps.DirectionsStatus.OK)
+                {
+                    path = path.concat(result.routes[0].overview_path);
+                    poly.setPath(path);
+                    
+                }
+            });
+            
+        }
+        
+    });
+   */
+   
 }
+
+
 
 function codeLatLng(LatLng, infowindow)
 {
@@ -131,10 +168,18 @@ function calcRoute()
         optimizeWaypoints: true,
         travelMode: google.maps.DirectionsTravelMode.DRIVING
     };
+
+
+
+
     directionsService.route(request, function (response, status)
     {
         if (status == google.maps.DirectionsStatus.OK)
         {
+            poly = new google.maps.Polyline({ map: map });
+            path = path.concat(response.routes[0].overview_path);
+            poly.setPath(path);
+
             directionsDisplay.setDirections(response);
             var route = response.routes[0];
             var summaryPanel = document.getElementById('directions_panel');
@@ -152,6 +197,10 @@ function calcRoute()
     });
 }
 
+
 // Hybenvej, Horsens
 // Sundbakken, Horsens
 //
+
+
+
