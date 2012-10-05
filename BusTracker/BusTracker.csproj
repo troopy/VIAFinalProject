@@ -177,7 +177,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\map.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Style\arrowtry.png" />
     <Content Include="Style\background.png" />
     <Content Include="Style\bg.png" />
     <Content Include="Style\bus.png" />
