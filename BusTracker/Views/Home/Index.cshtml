@@ -68,11 +68,43 @@
         <div id="map_canvas" style="width: 1000px; height: 500px"></div>
     </div>
 
+    
     <div>
         <input id="address" type="text" value="Horsens, Denmark">
         <input id="geoBtn" type="button" value="Geocode">
         <p></p>
         <input id="btnHome" type="button" value="My Location" />
+
+
+          <div id="control_panel" style="float:right;width:30%;text-align:left;padding-top:20px">
+    <div style="margin:20px;border-width:2px;">
+        <b>Start:</b>
+        <input id="start" type="text" />
+        <br>
+            <b>Waypoints:</b> <br>
+            <i>(Ctrl-Click for multiple selection)</i> <br>
+            <select multiple id="waypoints">
+              <option value="Horsens Banegard, Horsens">Horsens Banegard</input>
+              <option value="V.Berings Plads, Horsens">V.Berings Plads</input>
+              <option value="Norregade/Skolegade, Horsens">Norregade/Skolegade</input>
+              <option value="Sundvej/Sygehuset, Horsens">Sundvej/Sygehuset</input>
+              <option value="Bakkesvinget, Horsens">Bakkesvinget</input>
+              <option value="Hybenvej, Horsens">Hybenvej</input>
+              <option value="Chr. M. Ostegardsvej, Horsens">Chr. M. Ostegardsvej</input>
+              <option value="Sundbakken, Horsens">Sundbakken</input>
+              <option value="Bygaden/Hojmarksvej, Horsens">Bygaden/Hojmarksvej</input>
+              <option value="Stensballeskolen, Horsens">Stensballeskolen</input>
+              <option value="Bygaden/Hojmarksvej, Horsens">Bygaden/Hojmarksvej</input>
+            </select>
+        <br>
+        <b>End:</b>
+        <input id="end" type="text" />
+        <br>
+          <input type="submit" onclick="calcRoute();">
+    
+    <div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
+    </div>
+
     </div>
   
 
