@@ -1,0 +1,56 @@
+﻿@model BusTracker.Models.agency
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>agency</legend>
+
+    <div class="display-label">agency_id</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.agency_id)
+    </div>
+
+    <div class="display-label">agency_phone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.agency_phone)
+    </div>
+
+    <div class="display-label">agency_url</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.agency_url)
+    </div>
+
+    <div class="display-label">agency_name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.agency_name)
+    </div>
+
+    <div class="display-label">agency_timezone</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.agency_timezone)
+    </div>
+
+    <div class="display-label">agency_fare_url</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.agency_fare_url)
+    </div>
+
+    <div class="display-label">agency_lang</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.agency_lang)
+    </div>
+
+    <div class="display-label">route_url</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.route_url)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

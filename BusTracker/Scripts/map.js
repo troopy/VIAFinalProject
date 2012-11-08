@@ -197,7 +197,73 @@ function calcRoute()
     });
 }
 
+function addRouteDirection(addresses, color)
+{
 
+    var ds = new google.maps.DirectionsService();
+    var waypts = [];
+
+    for (var i = 1; i < addresses.length - 1; i++)
+    {
+
+        waypts.push({
+            location: addresses[i],
+            stopover: true
+        });
+
+    }
+
+    var request = {
+        origin: addresses[0],
+        destination: addresses[addresses.length - 1],
+        waypoints: waypts,
+        optimizeWaypoints: true,
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+    };
+
+    ds.route(request, function (response, status)
+    {
+        if (status == google.maps.DirectionsStatus.OK)
+        {
+            var localpath = [];
+            var lineSymbol = {
+                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+            };
+            poly = new google.maps.Polyline({
+                strokeColor: color,
+                //   strokeOpacity:0.7,
+                strokeWeight: 3,
+                //icons: [{
+                //    icon: lineSymbol,
+
+                //    repeat:'2%'
+                //}]
+            });
+            localpath = localpath.concat(response.routes[0].overview_path);
+            poly.setPath(localpath);
+            poly.setMap(map);
+
+            //   directionsDisplay.setDirections(response);
+
+        }
+    });
+
+
+}
+
+function addRoute(addresses, color)
+{
+
+    var polyOptions = {
+        strokeColor: color,
+        strokeOpacity: 1.0,
+        strokeWeight: 3,
+        path:addresses
+    }
+
+    poly = new google.maps.Polyline(polyOptions);
+    poly.setMap(map);
+}
 // Hybenvej, Horsens
 // Sundbakken, Horsens
 //

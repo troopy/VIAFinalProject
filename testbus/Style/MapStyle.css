@@ -1,0 +1,125 @@
+﻿.labels {
+   color: red;
+   background-color: white;
+   font-family: "Lucida Grande", "Arial", sans-serif;
+   font-size: 10px;
+   font-weight: bold;
+   text-align: center;
+   width: 60px;     
+   border: 2px solid black;
+   white-space: nowrap;
+ }
+.button img {
+  margin:15px;
+width: 50px;
+height: 50px;
+
+}
+#content {
+width:1400px;
+
+}
+#map_canvas {
+
+margin-top:140px;
+margin-left:140px;
+float:left;
+display:block;
+position:relative;
+z-index:-3;
+
+
+}
+.button {
+ width: 80px;
+ height: 80px;
+ line-height: 80px;
+ text-align: center;
+ vertical-align:middle;
+ line-height:80px;
+ text-decoration: none;
+ cursor: pointer;
+ display:block;
+  /* only necessary when buttons are vertically above one another */
+ /* display: inline; for horizontal buttons */
+ /* only necessary when buttons are horizontal to one another */
+ /* display: inline; for horizontal buttons */
+ border-top: 1px solid #96d1f8;
+ 
+  float:left;
+ background: -webkit-gradient(linear, left top, left bottom, from(#111629), to(#0273df));
+ background: -moz-linear-gradient(top, #111629, #0273df);
+ 
+ -webkit-border-radius: 10px;
+ -moz-border-radius: 10px;
+ border-radius: 10px;
+ -webkit-box-shadow: rgba(0,0,0,1) -2px 2px 4px;
+ -moz-box-shadow: rgba(0,0,0,1) -2px 2px 4px;
+ box-shadow: rgba(0,0,0,1) -2px 2px 4px;
+ /* text-shadow: rgba(0,0,0,.4) 0 1px 0; */
+ color: white;
+ font-size: 14px;
+ font-family: Arial, Helvetica, sans-serif;
+  margin:10px;
+  z-index:0;
+ 
+  
+    
+  
+ 
+}
+.text {
+  position:absolute;
+color:white;
+display:block;
+height:200px;
+width:200px;
+font-size: 20px;
+ font-family: Arial, Helvetica, sans-serif;
+text-decoration: none;
+text-align:center;
+line-height:200px;
+z-index:-1;
+
+
+
+
+}
+#frame {
+    background-image:url("bg.png");
+    color: white;
+    width:200px;
+    height:200px;
+    -webkit-transform: rotate(45deg) ;
+    -moz-transform: rotate(45deg) ;
+    -ms-transform: rotate(45deg) ;
+    transform: rotate(45deg);
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow: rgba(0,0,0,1) -2px 2px 4px;
+ -moz-box-shadow: rgba(0,0,0,1) -2px 2px 4px;
+ box-shadow: rgba(0,0,0,1) -2px 2px 4px;
+
+}
+#menu {
+    margin:42px;
+width:220px;
+height:220px;
+float:left;
+display:block;
+position:absolute;
+
+
+}
+.button:hover {
+   
+ background: -webkit-gradient(linear, left top, left bottom, from(#0273df), to(#111629));
+ background: -moz-linear-gradient(top, #0273df, #111629);
+ 
+
+}
+.button:active {
+    
+ border-top-color: #1b435e;
+ background: #1b435e;
+}
