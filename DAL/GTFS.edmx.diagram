@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4a205543404e45aca2d2c8264a07d1fa" Name="Diagram1" ZoomLevel="111">
+        <EntityTypeShape EntityType="GtfsDBModel.agency" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GtfsDBModel.bus" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GtfsDBModel.calendar" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GtfsDBModel.route" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GtfsDBModel.shape" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GtfsDBModel.stop_times" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GtfsDBModel.stop" Width="1.5" PointX="12.625" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GtfsDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GtfsDBModel.trip" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="GtfsDBModel.FK_routes_agency" ManuallyRouted="false" />
+        <AssociationConnector Association="GtfsDBModel.FK_bus_routes" ManuallyRouted="false" />
+        <AssociationConnector Association="GtfsDBModel.FK_trips_calendar" ManuallyRouted="false" />
+        <AssociationConnector Association="GtfsDBModel.FK_trips_routes" ManuallyRouted="false" />
+        <AssociationConnector Association="GtfsDBModel.FK_trips_shapes" ManuallyRouted="false" />
+        <AssociationConnector Association="GtfsDBModel.FK_stop_times_stops" ManuallyRouted="false" />
+        <AssociationConnector Association="GtfsDBModel.FK_stop_times_trips" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

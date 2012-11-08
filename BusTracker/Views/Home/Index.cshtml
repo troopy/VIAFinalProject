@@ -1,5 +1,6 @@
-﻿@{
-    Layout = null;
+﻿@model BusTracker.Models.ViewModels.StopView
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
 <html>
@@ -17,8 +18,12 @@
   
         $(document).ready(function () {
             initialize();
+
+
            
-           
+            
+
+            
             // not functioning correctly
                 $("#geoBtn").click(
                    function () {
@@ -44,8 +49,31 @@
             //    function () {
             //    $("#map_canvas").slideDown(500);
             //});
-        });
+            var k = [];
+
        
+         
+           
+            //alert(k[0][1]);
+
+            var addresses = [];
+            for (var i = 0; i < k.length; i++)
+            {
+                addresses[i] = new google.maps.LatLng(k[i][0], k[i][1]);
+            }
+            //alert(addresses[0]);
+
+            var addresses2 = [
+                 new google.maps.LatLng(55.86276, 9.83653),
+                 new google.maps.LatLng(55.86220, 9.84224),
+
+            ];
+
+            //alert(addresses[0].lat() + "\n" + addresses2[0].lat());
+            addRoute(addresses, "#0066FF");
+            
+        });
+     
     </script>
 </head>
 <body>
@@ -104,7 +132,8 @@
     </div>
 
     </div>
-  
+    <div>@Model.stop_name</div>
+      
 
 </body>
 </html>

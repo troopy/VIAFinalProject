@@ -1,0 +1,44 @@
+﻿@model BusTracker.Models.shape
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>shape</legend>
+
+    <div class="display-label">shape_id</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.shape_id)
+    </div>
+
+    <div class="display-label">shape_pt_lat</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.shape_pt_lat)
+    </div>
+
+    <div class="display-label">shape_pt_lon</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.shape_pt_lon)
+    </div>
+
+    <div class="display-label">shape_pt_sequence</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.shape_pt_sequence)
+    </div>
+
+    <div class="display-label">shape_dist_traveled</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.shape_dist_traveled)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
