@@ -97,7 +97,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="GTFS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GTFS.edmx</DependentUpon>
