@@ -8,7 +8,8 @@ var browserSupportFlag = new Boolean();
 var geocoder;
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
-var path = [], poly;
+var path = [];
+var poly = [];
 
 function initialize()
 {
@@ -125,7 +126,7 @@ function addMarker(LatLng)
 function codeAddress(marker)
 {
     geocoder = new google.maps.Geocoder();
-    var address = document.getElementById('address').value;
+    var address = document.getElementById('address').value();
     geocoder.geocode({ 'address': address }, function (results, status)
     {
         if (status == google.maps.GeocoderStatus.OK)
@@ -251,7 +252,7 @@ function addRouteDirection(addresses, color)
 
 }
 
-function addRoute(addresses, color)
+function addRoute(addresses, color,name)
 {
 
     var polyOptions = {
@@ -260,13 +261,129 @@ function addRoute(addresses, color)
         strokeWeight: 3,
         path:addresses
     }
-
-    poly = new google.maps.Polyline(polyOptions);
-    poly.setMap(map);
+    polyl = new google.maps.Polyline(polyOptions);
+    poly.push({ "name": name, "polyline":polyl });
+    for(var i=0;i<poly.length;i++){
+        if(poly[i].name==name){
+            (poly[i].polyline).setMap(map);
+        }
+    }
 }
-// Hybenvej, Horsens
-// Sundbakken, Horsens
-//
+
+function sendLocationToServer()
+{
+    if (navigator.geolocation)
+    {
+        browserSupportFlag = true;
+        navigator.geolocation.getCurrentPosition(function (position)
+        {
+            // initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var json_data = "lat=" + position.coords.latitude + "&lon=" + 5;
+            //  $("#var1").attr("value",position.coords.latitude);
+            //  $("#var2").attr("value", position.coords.longitude);
+            $.ajax({
+                type: "POST",
+                url: "/Home/latlon",
+                data: json_data,
+                success: function (msg)
+                {
+                    addMarker(new google.maps.LatLng(msg.lat, msg.lon, false));
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    // log the error to the console
+                    console.log(
+                        "The following error occured: " +
+                        textStatus, errorThrown
+                    );
+                }
+            });
+        });
+    }
+}
+
+
+function drawRoutes(RouteName)
+{ 
+    $.ajax({
+        type: "POST",
+        url: "/Home/drawroutes",
+        data: { Data: RouteName },
+        success: function (msg)
+        {
+            var addresses = [];
+         
+            for (var i = 0; i < msg.lat.length; i++)
+            {
+                addresses[i]= new google.maps.LatLng(msg.lat[i], msg.lon[i], false);
+            }
+            addRoute(addresses, msg.color,RouteName);
+           
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            // log the error to the console
+            console.log(
+                "The following error occured: " +
+                textStatus, errorThrown
+            );
+        }
+    });
+
+}
+
+function drawStops(RouteName)
+{
+    $.ajax({
+        type: "POST",
+        url: "/Home/drawStops",
+        data: { Data: RouteName },
+        success: function (msg)
+        {
+            // var addresses = [];
+            var image = new google.maps.MarkerImage('./Style/45busstop.png',
+       new google.maps.Size(45, 45),
+       new google.maps.Point(0, 0),
+       new google.maps.Point(22.5, 22.5)
+   );
+
+            for (var i = 0; i < msg.lat.length; i++)
+            {
+                var customMarker = new google.maps.Marker({
+                    position: new google.maps.LatLng(msg.lat[i], msg.lon[i], false),
+                    map: map,
+                    icon: image
+                });
+               // addMarker(new google.maps.LatLng(msg.lat[i], msg.lon[i], false));
+            }
+            //  addRoute(addresses, "#0066FF", RouteName);
+           
+
+           
+           
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            // log the error to the console
+            console.log(
+                "The following error occured: " +
+                textStatus, errorThrown
+            );
+        }
+    });
+
+}
+
+function clearMap(name)
+{
+    for (var i = 0; i < poly.length; i++)
+    {
+        if (poly[i].name == name)
+        {
+            (poly[i].polyline).setMap(null);
+        }
+    }
+}
 
 
 

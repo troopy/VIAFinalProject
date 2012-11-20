@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4a205543404e45aca2d2c8264a07d1fa" Name="Diagram1" ZoomLevel="111">
+      <Diagram DiagramId="4a205543404e45aca2d2c8264a07d1fa" Name="Diagram1" ZoomLevel="78">
         <EntityTypeShape EntityType="GtfsDBModel.agency" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GtfsDBModel.bus" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GtfsDBModel.calendar" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />

@@ -9,5 +9,6 @@ namespace BLL
     public class Base
     {
         public GtfsDBEntities db = new GtfsDBEntities();
+      
     }
 }

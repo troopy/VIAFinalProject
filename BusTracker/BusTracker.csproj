@@ -121,7 +121,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\StopView.cs" />
-    <Compile Include="Models\ShapeView.cs" />
+    <Compile Include="Models\ViewModels\ShapeView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,9 +192,11 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\map.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Style\45busstop.png" />
     <Content Include="Style\background.png" />
     <Content Include="Style\bg.png" />
     <Content Include="Style\bus.png" />
+    <Content Include="Style\busstop.png" />
     <Content Include="Style\clock.png" />
     <Content Include="Style\mapicon.png" />
     <Content Include="Style\MapStyle.css" />
@@ -209,6 +211,7 @@
     <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Style\stop.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

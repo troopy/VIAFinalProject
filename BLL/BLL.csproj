@@ -45,9 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.cs" />
+    <Compile Include="BusBLL.cs" />
+    <Compile Include="RouteBLL.cs" />
     <Compile Include="ShapeBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StopBLL.cs" />
+    <Compile Include="TripBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

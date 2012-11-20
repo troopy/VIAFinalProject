@@ -1,4 +1,4 @@
-﻿@model BusTracker.Models.ViewModels.StopView
+﻿
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,7 +7,7 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>No title</title>
-    
+
     <script src="Scripts/jquery-1.7.1.js"></script>
     <link href="Style/MapStyle.css" rel="stylesheet" />
     <script type="text/javascript"
@@ -15,33 +15,34 @@
     </script>
     <script src="Scripts/map.js"></script>
     <script type="text/javascript">
-  
-        $(document).ready(function () {
+
+        $(document).ready(function ()
+        {
             initialize();
+            var latarray = [];
+            var lonarray = [];
 
-
-           
-            
-
-            
             // not functioning correctly
-                $("#geoBtn").click(
-                   function () {
-                       codeAddress(marker)
-                   }
-                );
+            $("#geoBtn").click(
+               function ()
+               {
+                   codeAddress(marker)
+               }
+            );
+
+          //  $("#btnHome").click(function ()
+         //   {
+           
             // not implemented yet
-            $(document).ready(function ()
-            {
-                $("#homeBtn").click(function () {  });
-            });
-              
+           
+
             $.fx.off = false;
             $("#frame").animate({ rotate: '+=45deg' }, 1000);
             $(".text").hide();
             $(".button").hover(
                 function () { $('.text').fadeIn(500); },
-             function () {
+             function ()
+             {
                  $(".text").fadeOut(500);
              });
 
@@ -49,31 +50,52 @@
             //    function () {
             //    $("#map_canvas").slideDown(500);
             //});
-            var k = [];
+            $(document).ready(function ()
+            {
+                setInterval(function () { $("#directions_panel").append("<b>Appended text</b>") }, 30000);
+               
+               
+                setInterval(sendLocationToServer(), 30000);//sending your location every 30 seconds
+              //  setInterval(drawRoutes(), 5000);
+            });
+           // var checkedBoxIds = $("input:checked").value();
+        
 
-       
-         
-           
-            //alert(k[0][1]);
+            //    alert(latarray[4]+" "+ lonarray[4]);
 
             var addresses = [];
-            for (var i = 0; i < k.length; i++)
+            for (var i = 0; i < lonarray.length; i++)
             {
-                addresses[i] = new google.maps.LatLng(k[i][0], k[i][1]);
+                addresses[i] = new google.maps.LatLng(latarray[i], lonarray[i]);
             }
-            //alert(addresses[0]);
-
+          //  addMarker(new google.maps.LatLng(55.86276, 9.83653));
             var addresses2 = [
                  new google.maps.LatLng(55.86276, 9.83653),
                  new google.maps.LatLng(55.86220, 9.84224),
 
             ];
+            
 
             //alert(addresses[0].lat() + "\n" + addresses2[0].lat());
-            addRoute(addresses, "#0066FF");
-            
+            //   addRoute(addresses, "#0066FF");
+            $('#RoutesForm :checkbox').click(function ()
+            {
+                var $this = $(this);
+                // $this will contain a reference to the checkbox   
+                if ($this.is(':checked'))
+                {
+                    drawRoutes($this.val());
+                    drawStops($this.val());
+                   
+                } else
+                {
+                    clearMap($this.val());
+                  // the checkbox was unchecked
+                }
+            });
+           
         });
-     
+
     </script>
 </head>
 <body>
@@ -81,13 +103,17 @@
         <div id="menu">
 
             <div class="button">
-                <img src="Style/bus.png" /></div>
+                <img src="Style/bus.png" />
+            </div>
             <div class="button">
-                <img src="Style/clock.png" /></div>
+                <img src="Style/clock.png" />
+            </div>
             <div class="button">
-                <img src="Style/mapicon.png" /></div>
+                <img src="Style/mapicon.png" />
+            </div>
             <div class="button">
-                <img src="Style/route.png" /></div>
+                <img src="Style/route.png" />
+            </div>
 
             <div id="frame"></div>
             <div class="text">Schedule</div>
@@ -96,44 +122,52 @@
         <div id="map_canvas" style="width: 1000px; height: 500px"></div>
     </div>
 
-    
+
     <div>
-        <input id="address" type="text" value="Horsens, Denmark">
-        <input id="geoBtn" type="button" value="Geocode">
+        <input id="address" type="text" value="Horsens, Denmark" />
+        <input id="geoBtn" type="button" value="Geocode" />
         <p></p>
         <input id="btnHome" type="button" value="My Location" />
+    </div>
 
-
-          <div id="control_panel" style="float:right;width:30%;text-align:left;padding-top:20px">
-    <div style="margin:20px;border-width:2px;">
-        <b>Start:</b>
-        <input id="start" type="text" value="Horsens Banegard, Horsens" />
-        <br>
-            <b>Waypoints:</b> <br>
-            <i>(Ctrl-Click for multiple selection)</i> <br>
+    <div id="control_panel" style="float: right; width: 30%; text-align: left; padding-top: 20px">
+        <div style="margin: 20px; border-width: 2px;">
+            <b>Start:</b>
+            <input id="start" type="text" value="Horsens Banegard, Horsens" />
+            <br>
+            <b>Waypoints:</b>
+            <br>
+            <i>(Ctrl-Click for multiple selection)</i>
+            <br>
             <select multiple id="waypoints">
-              <option value="V.Berings Plads, Horsens">V.Berings Plads</input>
-              <option value="Norregade/Skolegade, Horsens">Norregade/Skolegade</input>
-              <option value="Sundvej/Sygehuset, Horsens">Sundvej/Sygehuset</input>
-              <option value="Bakkesvinget, Horsens">Bakkesvinget</input>
-              <option value="Hybenvej, Horsens">Hybenvej</input>
-              <option value="Chr. M. Ostegardsvej, Horsens">Chr. M. Ostegardsvej</input>
-              <option value="Sundbakken, Horsens">Sundbakken</input>
-              <option value="Bygaden/Hojmarksvej, Horsens">Bygaden/Hojmarksvej</input>
-              <option value="Stensballeskolen, Horsens">Stensballeskolen</input>
+                <option value="V.Berings Plads, Horsens">V.Berings Plads</option>
+                <option value="Norregade/Skolegade, Horsens">Norregade/Skolegade</option>
+                <option value="Sundvej/Sygehuset, Horsens">Sundvej/Sygehuset</option>
+                <option value="Bakkesvinget, Horsens">Bakkesvinget</option>
+                <option value="Hybenvej, Horsens">Hybenvej</option>
+                <option value="Chr. M. Ostegardsvej, Horsens">Chr. M. Ostegardsvej</option>
+                <option value="Sundbakken, Horsens">Sundbakken</option>
+                <option value="Bygaden/Hojmarksvej, Horsens">Bygaden/Hojmarksvej</option>
+                <option value="Stensballeskolen, Horsens">Stensballeskolen</option>
             </select>
-        <br>
-        <b>End:</b>
-        <input id="end" type="text" value="Bygaden/Hojmarksvej, Horsens" />
-        <br>
-          <input type="submit" onclick="calcRoute();">
-    
-    <div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
-    </div>
+            <br>
+            <b>End:</b>
+            <input id="end" type="text" value="Bygaden/Hojmarksvej, Horsens" />
+            <br>
+            <input type="submit" onclick="calcRoute();">
+  <div id="legend">         
+<form id="RoutesForm">
+<input type="checkbox" name="vehicle" value="1">I have a bike<br>
+<input type="checkbox" name="vehicle" value="2">I have a car 
+</form>
+      </div> 
+            <div id="directions_panel" style="margin: 20px; background-color: #FFEE77;"></div>
+        </div>
 
     </div>
-    <div>@Model.stop_name</div>
-      
+    <div>
+    </div>
+
 
 </body>
 </html>
