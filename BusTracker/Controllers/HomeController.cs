@@ -18,7 +18,7 @@ namespace BusTracker.Controllers
        
           //  List<string> ime = tr.getBusstopsByRouteID(1);
           
-
+             
             //List<ShapePoint> m = (from s in db.shapes where s.shape_id == "Line1" select new ShapePoint {shape_pt_lat = (double)s.shape_pt_lat, shape_pt_lon = (double)s.shape_pt_lon, shape_pt_sequence = s.shape_pt_sequence }).ToList();
             return View();
         }
