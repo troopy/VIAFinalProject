@@ -119,55 +119,19 @@
             <div class="text">Schedule</div>
 
         </div>
+        <div id="map_content">
         <div id="map_canvas" ></div>
     </div>
-     <div id="legend">         
+             <div id="legend">         
 <form id="RoutesForm">
 <input type="checkbox" name="vehicle" value="1">I have a bike<br>
 <input type="checkbox" name="vehicle" value="2">I have a car 
 </form>
       </div> 
-
-    <div>
-        <input id="address" type="text" value="Horsens, Denmark" />
-        <input id="geoBtn" type="button" value="Geocode" />
-        <p></p>
-        <input id="btnHome" type="button" value="My Location" />
-    </div>
-
-    <div id="control_panel" style="float: right; width: 30%; text-align: left; padding-top: 20px">
-        <div style="margin: 20px; border-width: 2px;">
-            <b>Start:</b>
-            <input id="start" type="text" value="Horsens Banegard, Horsens" />
-            <br>
-            <b>Waypoints:</b>
-            <br>
-            <i>(Ctrl-Click for multiple selection)</i>
-            <br>
-            <select multiple id="waypoints">
-                <option value="V.Berings Plads, Horsens">V.Berings Plads</option>
-                <option value="Norregade/Skolegade, Horsens">Norregade/Skolegade</option>
-                <option value="Sundvej/Sygehuset, Horsens">Sundvej/Sygehuset</option>
-                <option value="Bakkesvinget, Horsens">Bakkesvinget</option>
-                <option value="Hybenvej, Horsens">Hybenvej</option>
-                <option value="Chr. M. Ostegardsvej, Horsens">Chr. M. Ostegardsvej</option>
-                <option value="Sundbakken, Horsens">Sundbakken</option>
-                <option value="Bygaden/Hojmarksvej, Horsens">Bygaden/Hojmarksvej</option>
-                <option value="Stensballeskolen, Horsens">Stensballeskolen</option>
-            </select>
-            <br>
-            <b>End:</b>
-            <input id="end" type="text" value="Bygaden/Hojmarksvej, Horsens" />
-            <br>
-            <input type="submit" onclick="calcRoute();">
- 
-            <div id="directions_panel" style="margin: 20px; background-color: #FFEE77;"></div>
         </div>
 
-    </div>
-    <div>
-    </div>
 
-
+  
+  
 </body>
 </html>
