@@ -1,4 +1,8 @@
-﻿.labels {
+﻿body {
+
+background-image:url("bb.jpg");
+}
+.labels {
    color: red;
    background-color: white;
    font-family: "Lucida Grande", "Arial", sans-serif;
@@ -19,16 +23,29 @@ height: 50px;
 width:1400px;
 
 }
+map_content {
+margin-top:140px;
+margin-left:140px;
+float:left;
+background-color:white;
+border-radius:10px;
+display:block;
+position:absolute;
+z-index:-2;
+width: 1200px; 
+height: 78%;
+}
 #map_canvas {
     
 margin-top:140px;
 margin-left:140px;
 float:left;
 display:block;
-position:relative;
+position:absolute;
 z-index:-1;
-width: 1200px; 
-height: 700px;
+width: 85%; 
+height: 75%;
+
 
 
 }
