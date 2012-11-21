@@ -119,9 +119,14 @@
             <div class="text">Schedule</div>
 
         </div>
-        <div id="map_canvas" style="width: 1000px; height: 500px"></div>
+        <div id="map_canvas" ></div>
     </div>
-
+     <div id="legend">         
+<form id="RoutesForm">
+<input type="checkbox" name="vehicle" value="1">I have a bike<br>
+<input type="checkbox" name="vehicle" value="2">I have a car 
+</form>
+      </div> 
 
     <div>
         <input id="address" type="text" value="Horsens, Denmark" />
@@ -155,12 +160,7 @@
             <input id="end" type="text" value="Bygaden/Hojmarksvej, Horsens" />
             <br>
             <input type="submit" onclick="calcRoute();">
-  <div id="legend">         
-<form id="RoutesForm">
-<input type="checkbox" name="vehicle" value="1">I have a bike<br>
-<input type="checkbox" name="vehicle" value="2">I have a car 
-</form>
-      </div> 
+ 
             <div id="directions_panel" style="margin: 20px; background-color: #FFEE77;"></div>
         </div>
 
